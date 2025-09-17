@@ -11,29 +11,53 @@ import {Autoplay} from 'swiper/modules'
 
 export default function MainSlider() {
   return (
-    <div className='lg:flex hidden'>
-        <div className='w-3/4'>
+    <div className='w-full lg:flex lg:flex-row'>
+        <div className='w-full lg:w-3/4'>
              <Swiper
                spaceBetween={0}
                slidesPerView={1}
                modules={[Autoplay]}
-               autoplay={{delay : 2000}}
-
-         >
+               autoplay={{delay: 2000}}
+          >
                  <SwiperSlide>
-                    <Image src={slider1} alt='' className='w-full h-[400px] object-cover'/>
+                    <Image 
+                      src={slider1} 
+                      alt='Main slider image 1' 
+                      className='w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover'
+                    />
                  </SwiperSlide>
                  <SwiperSlide>
-                        <Image src={slider2} alt='' className='w-full h-[400px] object-cover'/>
+                        <Image 
+                          src={slider2} 
+                          alt='Main slider image 2' 
+                          className='w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover'
+                        />
                  </SwiperSlide>
                   <SwiperSlide>
-                         <Image src={slider3} alt='' className='w-full h-[400px] object-cover'/>
+                         <Image 
+                           src={slider3} 
+                           alt='Main slider image 3' 
+                           className='w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover'
+                         />
                  </SwiperSlide>
     </Swiper>
         </div>
-        <div className='w-1/4'>
-        <Image src={blog1} alt='blog' className='h-[200px] object-cover'/>
-        <Image src={blog2} alt='blog1' className='h-[200px] object-cover'/>
+
+        <div className='hidden lg:flex lg:w-1/4 lg:flex-col'>
+          <div className='w-full'>
+            <Image 
+              src={blog1} 
+              alt='Blog image 1' 
+              className='w-full h-[200px] object-cover'
+            />
+          </div>
+          <div className='w-full'>
+            <Image 
+              src={blog2} 
+              alt='Blog image 2' 
+              className='w-full h-[200px] object-cover'
+            />
+          </div>
         </div>
     </div>
   )

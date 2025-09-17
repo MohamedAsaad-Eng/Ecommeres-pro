@@ -16,7 +16,9 @@ export default async function Page({ params }: PageProps) {
   
   try {
     const data: ProductInterface = await getSingleProduct(id)
-    const RelatedProducts = await getRelatedProducts(data.category._id)
+    const RelatedProducts = data.category?._id 
+      ? await getRelatedProducts(data.category._id)
+      : { data: [] }
 
     return (
       <>
@@ -51,7 +53,7 @@ export default async function Page({ params }: PageProps) {
         <section className="mt-10">
           <h2 className="text-xl font-bold mb-5">Related Products</h2>
           <div className='flex flex-wrap gap-4'>
-            {RelatedProducts.data.map((prod: ProductInterface) => (
+            {RelatedProducts?.data?.map((prod: ProductInterface) => (
               <Produstitem key={prod._id} prod={prod} />
             ))}
           </div>
