@@ -3,7 +3,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Button } from '@/components/ui/button'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Input } from '@/components/ui/input'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { registerSchema, registerSchemaForm } from '@/schema/register.schema'
 
@@ -12,12 +12,17 @@ import { useRouter } from 'next/navigation'
 
 
 export default function Register() {
+  // إضافة حالة التحميل
+  const [isLoading, setIsLoading] = useState(false);
+  
   const router = useRouter();
   const form = useForm<registerSchemaForm>({
     resolver: zodResolver(registerSchema),
   });
 
   async function handleRegister(data: registerSchemaForm) {
+    setIsLoading(true); // بدء التحميل
+    
     try {
       const res = await fetch(
         "https://ecommerce.routemisr.com/api/v1/auth/signup",
@@ -40,6 +45,8 @@ export default function Register() {
       }
     } catch (err) {
       toast.error(String(err));
+    } finally {
+      setIsLoading(false); // إنهاء التحميل
     }
   }
 
@@ -48,15 +55,15 @@ export default function Register() {
        <>
     <h2 className='text-3xl text-center font-bold my-5'>Register Now:</h2>
     <Form {...form}>
-        <form className='w-2/3 mx-auto ' onSubmit={form.handleSubmit(handleRegister)}>
+        <form className='w-2/3 mx-auto' onSubmit={form.handleSubmit(handleRegister)}>
         <FormField
         name='name'
         control={form.control}
         render={({field})=>(
             <FormItem className='my-5'>
-                <FormLabel>name :</FormLabel>
+                <FormLabel>Name:</FormLabel>
                 <FormControl>
-                        <Input {...field}/>
+                        <Input {...field} disabled={isLoading} />
                 </FormControl>
                 <FormMessage/>
             </FormItem>
@@ -67,10 +74,10 @@ export default function Register() {
         control={form.control}
         render={({field})=>(
             <FormItem className='my-5'>
-                <FormLabel>email :</FormLabel>
+                <FormLabel>Email:</FormLabel>
                 <FormControl>
                     <div>
-                        <Input type='email' {...field}/>
+                        <Input type='email' {...field} disabled={isLoading} />
                     </div>
                 </FormControl>
                 <FormMessage/>
@@ -82,11 +89,9 @@ export default function Register() {
         control={form.control}
         render={({field})=>(
             <FormItem className='my-5'>
-                <FormLabel>password :</FormLabel>
+                <FormLabel>Password:</FormLabel>
                 <FormControl>
-
-                        <Input type="password" autoComplete='off' {...field}/>
-
+                        <Input type="password" autoComplete='off' {...field} disabled={isLoading} />
                 </FormControl>
                 <FormMessage/>
             </FormItem>
@@ -97,11 +102,9 @@ export default function Register() {
         control={form.control}
         render={({field})=>(
             <FormItem className='my-5'>
-                <FormLabel>repassword :</FormLabel>
+                <FormLabel>Confirm Password:</FormLabel>
                 <FormControl>
-
-                        <Input type="password" autoComplete='off' {...field}/>
-
+                        <Input type="password" autoComplete='off' {...field} disabled={isLoading} />
                 </FormControl>
                 <FormMessage/>
             </FormItem>
@@ -112,11 +115,9 @@ export default function Register() {
         control={form.control}
         render={({field})=>(
             <FormItem className='my-5'>
-                <FormLabel>phone :</FormLabel>
+                <FormLabel>Phone:</FormLabel>
                 <FormControl>
-
-                        <Input type="phone" {...field}/>
-
+                        <Input type="tel" {...field} disabled={isLoading} />
                 </FormControl>
                 <FormMessage/>
             </FormItem>
@@ -134,5 +135,5 @@ export default function Register() {
     </Form>
 
     </>
-  );
+  );
 }
