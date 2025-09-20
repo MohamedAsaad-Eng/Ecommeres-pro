@@ -9,7 +9,7 @@ export default function Produstitem({prod}:{prod:ProductInterface}) {
   return (
     <div className='w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3'>
         <div className='p-5 shadow-xl hover:shadow-green-600'>
-          <HeartItem/>
+          <HeartItem productId={prod._id}/>
            <Link href={`/products/${prod._id}`}>
             <Image width={300} height={300} src={prod.imageCover} className='w-full' alt="" />
             <span className='text-main mb-4'>{prod.category.name}</span>
