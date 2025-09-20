@@ -12,7 +12,7 @@ export async function addProduct(productId:string) {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
-            token: ''
+            token: `${token}`
         },
         body: JSON.stringify({ productId })
     })

@@ -13,7 +13,8 @@ export async function updateCount({ productId, count }: { productId: string, cou
         headers: {
             'Content-type': 'application/json',
 
-            token:'token'
+             token: `${token}`
+
         },
         body: JSON.stringify({ count })
     })

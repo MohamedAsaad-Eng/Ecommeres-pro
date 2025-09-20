@@ -22,7 +22,6 @@ export default function CheckOut({cartId}:{cartId:string}) {
     {
         const shippingAddress = data
         const res = await CheckOnline(cartId,'',shippingAddress)
-
         if(res?.status === 'success')
             window.location.href = res?.session?.url
     }

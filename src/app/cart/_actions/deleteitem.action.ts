@@ -12,7 +12,8 @@ export async function deleteItem(productId:string) {
         method: 'DELETE',
         headers: {
             'Content-type': 'application/json',
-            token: ''
+             token: `${token}`
+
         },
     })
 

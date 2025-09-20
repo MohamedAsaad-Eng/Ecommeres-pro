@@ -69,7 +69,13 @@ export default function Login() {
         )}
         />
 
-          <Button className='bg-main ml-auto block text-white my-5 cursor-pointer'>Login</Button>
+         <Button 
+            type="submit"
+            className='bg-main ml-auto block text-white my-5 cursor-pointer'
+             disabled={isLoading}
+              >
+              {isLoading ? 'Logging in...' : 'Login'}
+         </Button>
         </form>
     </Form>
 

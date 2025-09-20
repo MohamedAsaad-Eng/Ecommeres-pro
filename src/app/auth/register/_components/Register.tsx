@@ -34,7 +34,7 @@ export default function Register() {
 
       if (res.ok && responseData.message === "success") {
         toast.success("Register Success", {position:'top-center', duration: 4000});
-        router.push("/login");
+        router.push("/auth/login");
       } else {
         toast.error(responseData.message || "There is an error", {position:'top-center', duration: 4000});
       }
@@ -123,7 +123,13 @@ export default function Register() {
         )}
         />
 
-          <Button className='bg-main ml-auto block text-white my-5 cursor-pointer'>Register</Button>
+          <Button 
+             type="submit"
+             className='bg-main ml-auto block text-white my-5 cursor-pointer'
+               disabled={isLoading}
+               >
+                 {isLoading ? 'Registering...' : 'Register'}
+              </Button>
         </form>
     </Form>
 

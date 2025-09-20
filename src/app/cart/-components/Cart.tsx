@@ -40,8 +40,8 @@ export default function Cart() {
     <div className='py-5'>
       <h2>Total Cart Price: <span className='text-main font-bold'>{data?.data.totalCartPrice}EGP</span></h2>
       <h3>Names Of Cart Items: <span className='text-main font-bold'>{data?.numOfCartItems}</span></h3>
-<div className="relative my-5 overflow-x-auto shadow-md sm:rounded-lg">
-  <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <div className="relative my-5 overflow-x-auto shadow-md sm:rounded-lg">
+    <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <th scope="col" className="px-16 py-3">

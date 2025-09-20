@@ -22,7 +22,7 @@ export async function CheckOnline(cartId:string,url=process.env.NEXTAUTH_URL,shi
         }),
         headers:{
             'Content-type' : 'application/json',
-            token:''
+            token:`${token}`
         }
     })
 
